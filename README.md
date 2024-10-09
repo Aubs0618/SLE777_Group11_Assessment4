@@ -15,7 +15,7 @@ date: "2024-10-08"
 ```{r}
 install.packages("seqinr")
 ```
-# to install "R.utils" package
+#to install "R.utils" package
 
 ```{r}
 install.packages("R.utils")
@@ -70,7 +70,7 @@ length(ecoli )
 length(campylo )
 ```
 
-# to compare the result,data frame is constructed
+#to compare the result,data frame is constructed
 #variable is made for the species names as "Bacterial_strains"
 #variable is made for the number of coding sequence as "number of coding sequence"
 #make data frame by using data.frame code.
@@ -87,21 +87,55 @@ species_codseq
 
 
 
+# Question 02 -
 
-#Question 02 -**
+#To determine total coding DNA in E-coli and campylobacter ,unlist the csv and save as a variable tot_cod_dna_ecoli 
+#using"count" command , the DNA nucleotides are counted
+#To determine total coding DNA in E-coli 
+```{r,total coding DNA ecoli}
+tot_cod_dna_ecoli <- unlist(ecoli)
+count(tot_cod_dna_ecoli,1)
+```
+#To determine total coding DNA in campylobacter 
+```{r,total coding DNA campylo}
+tot_cod_dna_campylo <- unlist(campylo)
+count(tot_cod_dna_campylo,1)
+```
 
+#to present the result,data frame is constructed
+#variablea are made for neuleotides for each species names as "Number_of_coding_DNA_Ecoli " ans "Number_of_coding_DNA_Campylobacter" 
+#variable is made for the number of Nucleiotieds as "Nucleiotieds"
+#make data frame by using data.frame code.
+#include stringsAsFactors=FALSE to protect character strings being converted to factors.
 
+```{r,dataframe codDNA}
+Number_of_coding_DNA_Ecoli <- c(955768,977594,1088501,956665 )
+Number_of_coding_DNA_Campylobacter <- c(623683,229717,318984,554434 )
+Nucleiotieds <-c("A","C","G","T")
+cod_DNA<- data.frame(Nucleiotieds,Number_of_coding_DNA_eco,Number_of_coding_DNA_camp,stringsAsFactors = FALSE)
+cod_DNA
+```
 
-#To determine total coding DNA in E-coli and campylobacter
+#to calculte the total colsum code is used.
 ```{r}
-
+colSums(cod_DNA[,2:3])
+```
+#to construct a dataframe
+#variablea are made for each species names as "Bacterial_strains " 
+#variable is made for the coding DNA "Bacterial_strains"
+#make data frame by using data.frame code.
+#include stringsAsFactors=FALSE to protect character strings being converted to factors.
+```{r}
+Bacterial_strains<- c("E coli","Campylobacter Coli")
+Toal_Coding_DNA <-c(3978528,1726818 )
+df_tot_DNA <- data.frame(Bacterial_strains,Toal_Coding_DNA,stringsAsFactors = FALSE)
+df_tot_DNA 
 ```
 
 
 
 
-
-#Question 03 -
+# Question 03 -
 # to calculate the length of all coding sequences in these two organisms.
 ```{r,total coding DNA ecoli }
 length_ecoli <- as.numeric(summary(ecoli)[,1])
