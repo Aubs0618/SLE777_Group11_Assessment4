@@ -9,19 +9,20 @@ date: "2024-10-08"
 # Qestion 01 - 
 
 
-# to download the packge before download the sequence file from ensemble to opetn relavant files, "seqinr" and "R.utils" package installation is needed
-# to install "seqinr" package
+#to download the packge before download the sequence file from ensemble to opetn relavant files, "seqinr" and "R.utils" package installation is needed
+#to install "seqinr" package
+
 ```{r}
 install.packages("seqinr")
 ```
 # to install "R.utils" package
+
 ```{r}
 install.packages("R.utils")
 ```
 
-
-# to download E coli (GCA_003780985) to the direcotory,move to the ensemble,search the bacteria for FASTA file and  select the folder destination and pase the URL
-# the file then unzipped
+#to download E coli (GCA_003780985) to the direcotory,move to the ensemble,search the bacteria for FASTA file and  select the folder destination and pase the URL
+#the file then unzipped
 
 ```{r,E coli  FASTA file download}
 library("R.utils")
@@ -29,12 +30,12 @@ URL=("http://ftp.ensemblgenomes.org/pub/bacteria/release-53/fasta/bacteria_0_col
 download.file(URL,destfile="ecoli_cds.fa.gz")
 gunzip("ecoli_cds.fa.gz")
 ```
-# to check the downloaded file in the folder
+#to check the downloaded file in the folder
 ```{r}
 list.files()
 ```
-# to download Campylobacter coli (GCA_003780985) to the direcotory,move to the ensemble,search the bacteria for FASTA file and  select the folder destination and pase the URL
-# the file then unzipped
+#to download Campylobacter coli (GCA_003780985) to the direcotory,move to the ensemble,search the bacteria for FASTA file and  select the folder destination and pase the URL
+#the file then unzipped
 ```{r,campylobacter FASTA file download}
 URL=("https://ftp.ensemblgenomes.ebi.ac.uk/pub/bacteria/release-59/fasta/bacteria_46_collection/campylobacter_coli_gca_003780985/cds/Campylobacter_coli_gca_003780985.PDT000395653.1.cds.all.fa.gz")
 download.file(URL,destfile="Campylobacter_cds.fa.gz")
@@ -51,12 +52,10 @@ list.files()
 library("seqinr")
 ```
 
-
 #reads the uncompressed FASTA file ecoli_cds.fa containing E coli coding sequences into R using the read.fasta function from the seqinr package. 
 ```{r,Read Ecoli fasta }
 ecoli <- seqinr::read.fasta("ecoli_cds.fa")
 str(head(ecoli))
-
 ```
 
 #reads the uncompressed FASTA file campyloi_cds.fa containing campylobacter coding sequences into R using the read.fasta function from the seqinr package. 
@@ -65,12 +64,26 @@ campylo <- seqinr::read.fasta("Campylobacter_cds.fa")
 str(head(campylo))
 ```
 
-# to find the number of coding sequences in each bacteria 
+#to find the number of coding sequences in each bacteria 
 ```{r,E-coli and Campylobacter gene coding sequence}
 length(ecoli )
 length(campylo )
 ```
 
+# to compare the result,data frame is constructed
+#variable is made for the species names as "Bacterial_strains"
+#variable is made for the number of coding sequence as "number of coding sequence"
+#make data frame by using data.frame code.
+#run str() to check that the resulting dataframe has the intended structure. 
+#include stringsAsFactors=FALSE to protect character strings being converted to factors.
+
+```{r}
+Bacterial_strains<- c("E coli","Campylobacter Coli")
+Number_of_coding_sequence <- c(4239,1976)
+species_codseq <- data.frame(Bacterial_strains,Number_of_coding_sequence,stringsAsFactors = FALSE)
+str(species_codseq)
+species_codseq
+```
 
 
 
