@@ -293,6 +293,8 @@ campylo_kcounts <- count(prots_campylo ,wordsize=3,alphabet=aa)
 head(campylo_kcounts)
 ```
 
+
+
 ```{r}
 ecofreq <- count(prots_ecoli,wordsize=3,alphabet=aa,freq=TRUE)
 datafre_eco <- as.data.frame(ecofreq)
@@ -301,11 +303,15 @@ sorted_eco[c(1:10),c(1,ncol(sorted_eco))]
 ```
 
 
-
-
+# to compare the sequnec,barplots are created using "barplot" and x = protein sequence and y=frequencies
 ```{r}
-campylofreq <- count(prots_campylo,wordsize=3,alphabet=aa,freq=TRUE)
-datafre_camp <- as.data.frame(campylofreq)
-sorted_camp<-datafre_camp[order(datafre_camp$`Freq`),]
-sorted_camp[c(1:10),c(1,ncol(sorted_camp))]
+
+ecolifreq <- count(prots_ecoli,wordsize=1,alphabet=aa,freq=TRUE)
+barplot(ecolifreq ,xlab="Proteins sequence",ylab="Frequency", main="ecoli  protein composition")
+
+
+campylofreq <- count(prots_campylo,wordsize=1,alphabet=aa,freq=TRUE)
+barplot(campylofreq ,xlab="Proteins sequence",ylab="Frequency", main="Campylobacter  protein composition")
+
 ```
+
