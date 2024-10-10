@@ -1,0 +1,39 @@
+1.	How many coding sequences are present in these organisms?
+ Present this in the form of a table. 
+Describe any differences between the two organisms. 
+E. coli has 4,239 coding sequences, while Campylobacter coli has 1,976. This shows that E. coli has over double the coding sequences, suggesting a more complex genome with potentially more diverse functions.
+2.	How much coding DNA is there in total for these two organisms?
+ Present this in the form of a table. 
+Describe any differences between the two organisms.
+E. coli has 3,978,528 base pairs of coding DNA, more than double that of Campylobacter coli at 1,726,818. It also surpasses Campylobacter coli in all nitrogen bases: adenine (955,768 vs. 623,683), cytosine (977,594 vs. 229,717), guanine (1,088,501 vs. 318,984), and thymine (956,665 vs. 554,434). This highlights E. coli's greater genetic complexity.
+
+3.	Calculate the length of all coding sequences in these two organisms. 
+Make a boxplot of coding sequence length in these organisms. 
+What is the mean and median coding sequence length of these two organisms? 
+Describe any differences between the two organisms.
+E. coli has a mean length of 938.55, while Campylobacter coli has a mean length of 873.90, indicating that E. coli has a higher mean length. The median length for E. coli is 831, compared to 750 for Campylobacter coli, further demonstrating that E. coli generally has longer sequences than Campylobacter coli in both mean and median lengths.
+
+4.	Calculate the frequency of DNA bases in the total coding sequences for both organisms. 
+Perform the same calculation for the total protein sequence. 
+Create bar plots for nucleotide and amino acid frequency.
+ Describe any differences between the two organisms.
+
+In Campylobacter, adenine (A) is the most abundant nucleotide in coding sequences (CDS), significantly surpassing cytosine (C), guanine (G), and thymine (T). In contrast, E. coli has higher frequencies of all amino acids, especially glycine (G), with the others nearly equal. This indicates a robust amino acid profile in E. coli, suggesting a metabolic advantage. Overall, E. coli benefits from its diverse amino acid availability, while Campylobacter relies heavily on adenine in its genetic structure.
+
+Campylobacter exhibits higher frequencies of amino acids compared to E. coli, particularly for lysine (K) and aspartic acid (D), indicating a distinct amino acid profile. While both have similar levels of alanine (A), E. coli shows lower overall counts. Additionally, less common amino acids like tryptophan (W) and tyrosine (Y) are slightly more abundant in Campylobacter. These differences suggest a more diverse amino acid composition in Campylobacter, potentially affecting its metabolic pathways and functions.
+
+5.	Create a codon usage table and quantify the codon usage bias among all coding sequences. 
+Describe any differences between the two organisms with respect to their codon usage bias.
+Provide charts to support your observations.
+
+Campylobacter shows lower RSCU values, with many codons used less frequently than expected. In contrast, E. coli has a broader spread of RSCU values, with codons often near 1.0, indicating expected usage. This highlights a strong codon bias in Campylobacter, which prefers only a few codons, while E. coli uses codons more evenly, with many falling in the 1.0 to 2.0 range. Codons with RSCU values above 1 are used more often in E. coli than in Campylobacter.
+
+
+6.	In the organism of interest, identify 10 protein sequence k-mers of length 3-5 which are the most over- and under-represented k-mers in your organism of interest.
+Are these k-mers also over- and under-represented in E. coli to a similar extent?
+ Provide plots to support your observations.
+Why do you think these sequences are present at different levels in the genomes of these organisms?
+
+Campylobacter has lower frequency limits, with some codons showing values as low as 0.00000 for three amino acids, compared to E. coli. In contrast, E. coli does not exhibit a frequency value of 1.000 as the minimum. Therefore, the under-representation of certain codons in E. coli differs significantly from that in Campylobacter.
+
+In E. coli, A (alanine) and L (leucine) amino acids are predominantly used, while C (cysteine) and W (tryptophan) are used less frequently. In Campylobacter, G (glycine) is used more often, along with A, L, and K (lysine). Overall, both E. coli and Campylobacter show a relatively higher usage of A and L compared to other amino acids. However, based on the plot generated in R Studio, the overall amino acid usage is not significantly different between the two species.
