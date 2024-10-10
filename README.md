@@ -249,13 +249,24 @@ barplot(prot_composition_campylo ,xlab="Amino acids",ylab="Frequency", main="Cam
 ```{r,codon usage ecoli}
 prosec_ecoli <- unlist(prot_ecoli)
 uco(prosec_ecoli,index="rscu",as.data.frame=TRUE)
+
+```
+#for campylobacter
+```{r,codon usage campylobacter}
+prosec_campylo <- unlist(prot_campylo)
+uco(prosec_campylo,index="rscu",as.data.frame=TRUE)
+
 ```
 
+# providing evidece as chart for frequencies of genes in each species
+# define the output of variable of codons for create a dataframe
 
-
-
-
-
-
-
+```{r, ecoli RASCU chart}
+dataframe_ecoli <- uco(prosec_ecoli,index="rscu",as.data.frame=TRUE)
+hist(dataframe_ecoli$RSCU,x=,xlab="RSCU Value", main="Relative synonymous codon usage  for Ecoli codons")
+```
+```{r,campylobacter RSCU chart}
+dataframe_campylo <- uco(prosec_campylo,index="rscu",as.data.frame=TRUE)
+hist(dataframe_campylo$RSCU,x=,xlab="RSCU Value", main="Relative synonymous codon usage for Campylobacter codons")
+```
 
