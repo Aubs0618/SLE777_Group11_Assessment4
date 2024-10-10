@@ -1,7 +1,7 @@
 # SLE777_Group11_Assessment4
 
 ---
-title: "Part 2- Gene and Protein Comparison "
+title: "Part 2- Gene and Protein Comparison of E-coli and Campylobacter coli "
 output: html_document
 date: "2024-10-08"
 ---
@@ -133,31 +133,32 @@ df_tot_DNA
 ```
 
 
-
-
 # Question 03 -
-# to calculate the length of all coding sequences in these two organisms.
+
+#to calculate the length of all coding sequences in these two organisms,
+#variable is made the strings to convert numetric values  and sum is used to calculate the total lengths.
+
 ```{r,total coding DNA ecoli }
 length_ecoli <- as.numeric(summary(ecoli)[,1])
 sum(length_ecoli)
 ```
-
 ```{r,total coding DNA Campylobacter}
 length_campylo <- as.numeric(summary(campylo)[,1])
 sum(length_campylo)
 ```
 
-
-# to make a boxplot of coding sequence length in the organisms.
-```{r}
+#to make a boxplot of coding sequence length in the organisms.
+```{r,Boxplot seqences}
 boxplot(length_ecoli,length_campylo,xlab="Bacteria Species",ylab = "sequence length (bp)",main = "Comparison of Sequence length",names = c("Ecoli","Campylobacter"))
 ```
-# to find lenth mean of Ecoli and Campylobacter
+
+#to find lenth mean of Ecoli and Campylobacter mean funtion is used.
 ```{r}
 mean(length_ecoli)
 mean(length_campylo)
 ```
-# to find lenth median of Ecoli and Campylobacter
+
+#to find lenth mean of Ecoli and Campylobacter median funtion is used. 
 ```{r}
 median(length_ecoli)
 median(length_campylo)
@@ -165,66 +166,77 @@ median(length_campylo)
 
 
 
-#Question 04-
 
-# to Calculate the frequency of DNA bases in the total coding sequences for organisms.
-# to analyze the nucleotide composition of a  the DNA sequence, first need to unlist the cds, store it in the dna variable.
-# then calculate the frequency of each nucleotide using dna_composition <- count(..., 1), which stores these frequencies in dna_composition.
-# to count each nucleotide Srt() code is used.
+# Question 04-
 
-# for ecoli
-````{r}
+#part 01 - for DNA
+
+#to Calculate the frequency of DNA bases in the total coding sequences for organisms.
+#to analyze the nucleotide composition of a  the DNA sequence, first need to unlist the cds, store it in the dna variable.
+#then calculate the frequency of each nucleotide using dna_composition <- count(..., 1), which stores these frequencies in dna_composition.
+#to count each nucleotide Srt() code is used.
+
+#for ecoli
+````{r,ecoi frequency}
 dna_ecoli <- unlist(ecoli)
 dna_composition_ecoli <- count(dna_ecoli ,1)
 str(dna_composition_ecoli)
 ```
 # for Campylobacter
-
-```{r}
+```{r,campylo frequency}
 dna_campylo <- unlist(campylo)
 dna_composition_campylo <- count(dna_campylo,1)
 str(dna_composition_campylo)
 ```
+
 # then visualize this data with barplot where the x-axis represents the nucleotides (A, C, G, T), the y-axis shows their frequencies, and the plot title indicates that it displays the nucleotide composition of coding sequences.
-
-
-```{r}
+```{,barplot for species}
 dna_composition_ecoli <- count(dna_ecoli ,1)
 barplot(dna_composition_ecoli ,xlab="Nucleotides",ylab="Frequency", main="E coli CDS composition")
 
 dna_composition_campylo <- count(dna_campylo ,1)
 barplot(dna_composition_campylo ,xlab="Nucleotides",ylab="Frequency", main="Campylobacter CDS composition")
-
 ```
-#Question 04 -Part 02
-#Calculate the frequency of aminoacid in the total protein sequence. 
+
+# -Part 02 - for protein
+
+#Calculate the frequency of amino acid in the total protein sequence. 
 #to translate the DNA sequences for protein sequence use a for loop  to translate all the cds sequences in the genomes
 #lapply applies the translate function to each element of the cds list, resulting in prot, a list of translated protein sequences.
+# to convert the list to string ,unlits the protein sequence using "unlist" command
 
-
-# for ecoli
+# for ecoli ,to detect total  each amino acid frequencey in protein sequence 
 ```{r,Ecoli Protein sequence}
 prot_ecoli <- lapply(ecoli, translate)
+aa <- unique(prot_ecoli[[2]])
+aa <- aa[aa != "*"]
+Proseq_ecoli <- unlist(prot_ecoli)
+count(Proseq_ecoli,wordsize=1, alphabet =aa)
 ```
 
-
-```{r}
-unlist(prot_ecoli)
-protein_sequence <- unlist(ecoli)
-length(protein_sequence)
-aa_ecoli <- unique(prot_ecoli)
-aa_ecoli <- aa_ecoli[aa_ecoli != "*"]
- <-count(protein_sequence,wordsize=1,alphabet=aa_ecoli)
-
-```
-
-
-
-#for campylobacter
+# for campylobacter ,# for ecoli ,to detect total  each amino acid frequencey in protein sequence 
 ```{r,campylobacter Protein sequence}
 prot_campylo <- lapply(campylo, translate)
-str(prot_campylo)
+aa <- unique(prot_campylo[[2]])
+aa <- aa[aa != "*"]
+Proseq_campylo <- unlist(prot_campylo)
+count(Proseq_campylo,wordsize=1, alphabet =aa)
 ```
+
+# to determine the frequency of each amino acid in all genes,this counts the occurrences of each amino acid in the sequence of the prot list, using aa as the set of possible amino acids. 
+# unlist the sequence using "unlist" and count the sequence and alphabet used to reperesent the each amonoacid,word size give to repersent as one alphabet
+
+```{r}
+prot_composition_ecoli <- count(Proseq_campylo,wordsize=1, alphabet =aa)
+barplot(prot_composition_ecoli ,xlab="Amino acids",ylab="Frequency", main="E coli aminoacid composition")
+
+prot_composition_campylo <- count(Proseq_ecoli,wordsize=1, alphabet =aa)
+barplot(prot_composition_campylo ,xlab="Amino acids",ylab="Frequency", main="Campylobacter amino acid composition")
+```
+
+
+
+
 
 
 
