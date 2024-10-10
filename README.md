@@ -236,6 +236,22 @@ barplot(prot_composition_campylo ,xlab="Amino acids",ylab="Frequency", main="Cam
 
 
 
+# Question 05 -
+
+# to Create a codon usage table and quantify the codon usage bias among all coding sequences.
+# computes the Relative Synonymous Codon Usage (RSCU) values, which is a measure as to how preferred a codon of a particular amino acid is compared to the other codons which also encode it,
+#for that use "rscu" fucntion
+# unlist teh protein sequecne and then define newvariales relatively to calcutlte the sequences.
+#to get these values in a data frame ,use the option as.data.frame=True
+#uco command is used to determine the calculates some codon usage information.
+
+# for Ecoli ,
+```{r,codon usage ecoli}
+prosec_ecoli <- unlist(prot_ecoli)
+uco(prosec_ecoli,index="rscu",as.data.frame=TRUE)
+```
+
+
 
 
 
