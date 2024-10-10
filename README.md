@@ -226,14 +226,13 @@ count(Proseq_campylo,wordsize=1, alphabet =aa)
 # to determine the frequency of each amino acid in all genes,this counts the occurrences of each amino acid in the sequence of the prot list, using aa as the set of possible amino acids. 
 # unlist the sequence using "unlist" and count the sequence and alphabet used to reperesent the each amonoacid,word size give to repersent as one alphabet
 
-```{r}
+```{r,protein composition charts}
 prot_composition_ecoli <- count(Proseq_campylo,wordsize=1, alphabet =aa)
 barplot(prot_composition_ecoli ,xlab="Amino acids",ylab="Frequency", main="E coli aminoacid composition")
 
 prot_composition_campylo <- count(Proseq_ecoli,wordsize=1, alphabet =aa)
 barplot(prot_composition_campylo ,xlab="Amino acids",ylab="Frequency", main="Campylobacter amino acid composition")
 ```
-
 
 
 # Question 05 -
@@ -270,3 +269,40 @@ dataframe_campylo <- uco(prosec_campylo,index="rscu",as.data.frame=TRUE)
 hist(dataframe_campylo$RSCU,x=,xlab="RSCU Value", main="Relative synonymous codon usage for Campylobacter codons")
 ```
 
+# Question 06-
+
+
+#to identify particular sequences that are over- or under-represented in an organism,K-mer profiling is done for each species.
+
+# unlist the sequence using "unlist" and define it as new variable "ecoli_kcounts" 
+# for output acmino acid, nmber of alphabets with 3 leter is given for represent the codon.
+
+
+# for ecoli
+```{r,kmer Ecoli}
+prots_ecoli <- unlist(prot_ecoli)
+ecoli_kcounts <- count(prots_ecoli ,wordsize=3,alphabet=aa)
+head(ecoli_kcounts)
+```
+
+
+# for campylobacter
+```{r,Kmer campylobacter}
+prots_campylo <- unlist(prot_campylo)
+campylo_kcounts <- count(prots_campylo ,wordsize=3,alphabet=aa)
+head(campylo_kcounts)
+```
+
+```{r}
+ecofreq <- count(prots_ecoli,wordsize=3,alphabet=aa,freq=TRUE)
+datafre_eco <- as.data.frame(ecofreq)
+sorted_eco<-datafre_eco[order(datafre_eco $`Freq`),]
+sorted_eco[c(1:10),c(1,ncol(sorted_eco))]
+```
+
+```{r}
+campylofreq <- count(prots_campylo,wordsize=3,alphabet=aa,freq=TRUE)
+datafre_camp <- as.data.frame(campylofreq)
+sorted_camp<-datafre_camp[order(datafre_camp$`Freq`),]
+sorted_camp[c(1:10),c(1,ncol(sorted_camp))]
+```
