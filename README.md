@@ -1,8 +1,6 @@
 # SLE777_Group11_Assessment4
 ## Part 1: Gene Expression and Growth Data Analysis
 
-### Step 1: Import and Analyze Gene Expression Data
-```{r}
 # Load necessary libraries
 library(ggplot2)  # For plotting
 library(dplyr)    # For data manipulation
@@ -22,9 +20,12 @@ gene_data$Mean_Expression <- rowMeans(gene_data)
 head(gene_data, 6)
 
 Step 3: Top 10 Genes with Highest Mean Expression
+
+# List the top 10 genes with the highest mean expression
 top_genes <- gene_data[order(-gene_data$Mean_Expression), ]
 top10_genes <- head(top_genes, 10)
 top10_genes
+
 
 Step 4: Histogram of Mean Expression Values
 # Create a histogram of the mean expression values
@@ -36,8 +37,11 @@ ggplot(gene_data, aes(x = Mean_Expression)) +
        y = "Frequency")
 
 Step 5: Import and Analyze Growth Data
+# Download and read in the growth_data.csv file
 download.file("https://github.com/ghazkha/Assessment4/raw/main/growth_data.csv", destfile = "growth_data.csv")
 growth_data <- read.csv("growth_data.csv")
+
+# Show the column names
 colnames(growth_data)
 
 Step 6: Reshape and Analyze Growth Data
@@ -47,6 +51,7 @@ long_growth_data <- growth_data %>%
 long_growth_data$Year <- as.numeric(long_growth_data$Year)
 
 Step 7: Box Plot of Growth Data
+# Create a boxplot of tree circumference by year
 ggplot(long_growth_data, aes(x = as.factor(Year), y = Circumference, fill = Site)) +
   geom_boxplot() +
   theme_minimal() +
