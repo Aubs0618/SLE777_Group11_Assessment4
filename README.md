@@ -374,4 +374,3 @@ barplot(campylofreq ,xlab="Proteins sequence",ylab="Frequency", main="Campylobac
 
 ```
 
-Git Add
