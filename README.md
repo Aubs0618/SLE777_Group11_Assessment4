@@ -300,6 +300,9 @@ sorted_eco<-datafre_eco[order(datafre_eco $`Freq`),]
 sorted_eco[c(1:10),c(1,ncol(sorted_eco))]
 ```
 
+
+
+
 ```{r}
 campylofreq <- count(prots_campylo,wordsize=3,alphabet=aa,freq=TRUE)
 datafre_camp <- as.data.frame(campylofreq)
