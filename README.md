@@ -1,4 +1,58 @@
 # SLE777_Group11_Assessment4
+## Part 1: Gene Expression and Growth Data Analysis
+
+### Step 1: Import and Analyze Gene Expression Data
+```{r}
+# Load necessary libraries
+library(ggplot2)  # For plotting
+library(dplyr)    # For data manipulation
+library(tidyr)    # For reshaping the data
+
+# Step 1: Download and read in the gene_expression.tsv file
+download.file("https://github.com/ghazkha/Assessment4/raw/main/gene_expression.tsv", destfile = "gene_expression.tsv")
+gene_data <- read.table("gene_expression.tsv", header = TRUE, sep = "\t", row.names = 1)
+
+# Show the first six genes
+head(gene_data, 6)
+
+# Step 2: Add a new column for the mean expression of each gene
+gene_data$Mean_Expression <- rowMeans(gene_data)
+
+# Show the first six genes with the mean expression
+head(gene_data, 6)
+
+Step 3: Top 10 Genes with Highest Mean Expression
+top_genes <- gene_data[order(-gene_data$Mean_Expression), ]
+top10_genes <- head(top_genes, 10)
+top10_genes
+
+Step 4: Histogram of Mean Expression Values
+# Create a histogram of the mean expression values
+ggplot(gene_data, aes(x = Mean_Expression)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  theme_minimal() +
+  labs(title = "Histogram of Mean Gene Expression",
+       x = "Mean Expression",
+       y = "Frequency")
+
+Step 5: Import and Analyze Growth Data
+download.file("https://github.com/ghazkha/Assessment4/raw/main/growth_data.csv", destfile = "growth_data.csv")
+growth_data <- read.csv("growth_data.csv")
+colnames(growth_data)
+
+Step 6: Reshape and Analyze Growth Data
+# Reshape the data from wide to long format
+long_growth_data <- growth_data %>%
+  pivot_longer(cols = starts_with("Circumf_"), names_to = "Year", names_prefix = "Circumf_", values_to = "Circumference")
+long_growth_data$Year <- as.numeric(long_growth_data$Year)
+
+Step 7: Box Plot of Growth Data
+ggplot(long_growth_data, aes(x = as.factor(Year), y = Circumference, fill = Site)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Boxplot of Tree Circumference",
+       x = "Year",
+       y = "Circumference (cm)")
 
 ---
 title: "Part 2- Gene and Protein Comparison of E-coli and Campylobacter coli "
