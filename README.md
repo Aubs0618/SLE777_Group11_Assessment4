@@ -71,25 +71,25 @@ date: "2024-10-08"
 #to download the packge before download the sequence file from ensemble to opetn relavant files, "seqinr" and "R.utils" package installation is needed
 #to install "seqinr" package
 
-```{r}
+```{r, installation package seq}
 install.packages("seqinr")
 ```
 #to install "R.utils" package
 
-```{r}
+```{r installation package R utilities}
 install.packages("R.utils")
 ```
 
 #to download E coli (GCA_003780985) to the direcotory,move to the ensemble,search the bacteria for FASTA file and  select the folder destination and pase the URL
 #the file then unzipped
 
-```{r,E coli  FASTA file download}
+```{r,E coli download FASTA}
 library("R.utils")
 URL=("http://ftp.ensemblgenomes.org/pub/bacteria/release-53/fasta/bacteria_0_collection/escherichia_coli_str_k_12_substr_mg1655_gca_000005845/cds/Escherichia_coli_str_k_12_substr_mg1655_gca_000005845.ASM584v2.cds.all.fa.gz")
 download.file(URL,destfile="ecoli_cds.fa.gz")
 gunzip("ecoli_cds.fa.gz")
 ```
-#to check the downloaded file in the folder
+#to check the downloaded file
 ```{r}
 list.files()
 ```
