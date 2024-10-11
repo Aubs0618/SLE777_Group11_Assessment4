@@ -68,8 +68,8 @@ date: "2024-10-08"
 # Qestion 01 - 
 
 
-#to download the packge before download the sequence file from ensemble to opetn relavant files, "seqinr" and "R.utils" package installation is needed
-#to install "seqinr" package
+#before downloading the sequence file from ensemble to opetn relavant files, it is needed to downnload "seqinr" and "R.utils" package installation.
+#to install "seqinr" package 
 
 ```{r, installation package seq}
 install.packages("seqinr")
@@ -80,7 +80,7 @@ install.packages("seqinr")
 install.packages("R.utils")
 ```
 
-#to download E coli (GCA_003780985) to the direcotory,move to the ensemble,search the bacteria for FASTA file and  select the folder destination and pase the URL
+#to download E coli (GCA_003780985) to the direcotory, from the ensemble, FASTA file was searched and selected the folder destination and pase the URL.
 #the file then unzipped
 
 ```{r,E coli download FASTA}
@@ -89,11 +89,11 @@ URL=("http://ftp.ensemblgenomes.org/pub/bacteria/release-53/fasta/bacteria_0_col
 download.file(URL,destfile="ecoli_cds.fa.gz")
 gunzip("ecoli_cds.fa.gz")
 ```
-#to check the downloaded file
+#to check the downloaded file whether the file is downloaded properly.
 ```{r}
 list.files()
 ```
-#to download Campylobacter coli (GCA_003780985) to the direcotory,move to the ensemble,search the bacteria for FASTA file and  select the folder destination and pase the URL
+#to download Campylobacter coli (GCA_003780985) to the direcotory, from the ensemble, FASTA file was searched and selected the folder destination and pase the URL.
 #the file then unzipped
 ```{r,campylobacter FASTA file download}
 URL=("https://ftp.ensemblgenomes.ebi.ac.uk/pub/bacteria/release-59/fasta/bacteria_46_collection/campylobacter_coli_gca_003780985/cds/Campylobacter_coli_gca_003780985.PDT000395653.1.cds.all.fa.gz")
@@ -101,7 +101,7 @@ download.file(URL,destfile="Campylobacter_cds.fa.gz")
 gunzip("Campylobacter_cds.fa.gz")
 ```
 
-#to check the downloaded file
+#to check the downloaded file whether the file is downloaded properly.
 ```{r}
 list.files()
 ```
@@ -148,7 +148,8 @@ species_codseq
 
 # Question 02 -
 
-#To determine total coding DNA in E-coli and campylobacter ,unlist the csv and save as a variable tot_cod_dna_ecoli 
+#To determine total coding DNA in E-coli and campylobacter ,
+#unlisted the csv and saved as a variable tot_cod_dna_ecoli 
 #using"count" command , the DNA nucleotides are counted
 #To determine total coding DNA in E-coli 
 ```{r,total coding DNA ecoli}
@@ -162,10 +163,10 @@ count(tot_cod_dna_campylo,1)
 ```
 
 #to present the result,data frame is constructed
-#variablea are made for neuleotides for each species names as "Number_of_coding_DNA_Ecoli " ans "Number_of_coding_DNA_Campylobacter" 
-#variable is made for the number of Nucleiotieds as "Nucleiotieds"
+#variables are made for neucleotides for each species named as "Number_of_coding_DNA_Ecoli " and "Number_of_coding_DNA_Campylobacter" 
+#variable is made for the number of Nucleotides as "Nucleiotieds"
 #make data frame by using data.frame code.
-#include stringsAsFactors=FALSE to protect character strings being converted to factors.
+#included the "stringsAsFactors=FALSE" to protect character strings being converted to factors.
 
 ```{r,dataframe codDNA}
 Number_of_coding_DNA_Ecoli <- c(955768,977594,1088501,956665 )
@@ -249,7 +250,7 @@ str(dna_composition_campylo)
 ```
 
 # then visualize this data with barplot where the x-axis represents the nucleotides (A, C, G, T), the y-axis shows their frequencies, and the plot title indicates that it displays the nucleotide composition of coding sequences.
-```{,barplot for species}
+```{r,barplot for species}
 dna_composition_ecoli <- count(dna_ecoli ,1)
 barplot(dna_composition_ecoli ,xlab="Nucleotides",ylab="Frequency", main="E coli CDS composition")
 
