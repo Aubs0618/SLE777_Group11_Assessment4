@@ -77,9 +77,33 @@ sd(southwest[,1])
 sd(southwest[,2])
 ```
 
-```{r}
+# step 10:  subset northeast data site
 
+```{r}
+northeast <- subset(growth_data,Site == "northeast", c("Circumf_2005_cm", "Circumf_2020_cm"))
+head(northeast)
 ```
+
+# step 11: northeast mean of the years
+```{r}
+colMeans(northeast)
+```
+
+# step 12: circumferenc standard deviation  northeeast of the years
+```{r}
+sd(northeast[,1])
+```
+
+```{r}
+sd(northeast[,2])
+```
+
+# Step 13 Box Plot of Growth Data
+# Create a boxplot of tree circumference by year
+```{r}
+boxplot(northeast [,1],northeast [,2],southwest[,1],southwest[,2],xlab="number of cylinders",ylab = "circumfrence",main="Tree circumference",names = c("northeast 2005","northeast 2020","southwest 2005","southwest 2020"))
+```
+
 
 
 
