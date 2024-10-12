@@ -34,16 +34,19 @@ top10_genes
 
 
 
-Step 4: Histogram of Mean Expression Values
-# Create a histogram of the mean expression values
-ggplot(gene_data, aes(x = Mean_Expression)) +
-  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
-  theme_minimal() +
-  labs(title = "Histogram of Mean Gene Expression",
-       x = "Mean Expression",
-       y = "Frequency")
+Step 4: number of genes with a mean <10
+```{r}
+meanless10<- subset(gene_data,`Mean_Expression` < 10)
+nrow(meanless10)
+```
 
-Step 5: Import and Analyze Growth Data
+step 5:histogram plot of the mean values
+# Create a histogram of the mean expression values
+```{r}
+hist(top10_genes$Mean_Expression,xlab="Top 10 genes",main =" Top gene 10 mean expression")
+```
+
+Step 6: Import and Analyze Growth Data
 # Download and read in the growth_data.csv file
 download.file("https://github.com/ghazkha/Assessment4/raw/main/growth_data.csv", destfile = "growth_data.csv")
 growth_data <- read.csv("growth_data.csv")
