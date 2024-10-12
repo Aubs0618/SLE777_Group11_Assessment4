@@ -117,7 +117,12 @@ southwest_grwdif <- subset(growth_data,Site == "southwest", c("Circumf_2010_cm",
 southwest_grwdif$growth_diffe <-southwest_grwdif$Circumf_2020_cm -southwest_grwdif$Circumf_2010_cm
 colMeans(southwest_grwdif)
 ```
-
+# step 15
+#to do t- test for two samples and determnie the p value do the command t.test
+#used two sample t.test 
+```{r}
+t.test(southwest_grwdif[,3],northeast_grwdif[,3])
+```
 
 
 
