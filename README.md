@@ -8,7 +8,7 @@ download.file("https://github.com/ghazkha/Assessment4/raw/main/gene_expression.t
 gene_data <- read.table("gene_expression.tsv", header = TRUE, sep = "\t", row.names = 1)
 ```
 
-# Show the first six genes
+#Show the first six genes
 ```{r,top 6}
 head(gene_data, 6)
 ```
@@ -18,58 +18,73 @@ head(gene_data, 6)
 gene_data$Mean_Expression <- rowMeans(gene_data)
 ```
 
-# Show the first six genes with the mean expression
+#Show the first six genes with the mean expression
 ```{r,}
 head(gene_data, 6)
 ```
 
-Step 3: Top 10 Genes with Highest Mean Expression
+# Step 3: Top 10 Genes with Highest Mean Expression
 
-# List the top 10 genes with the highest mean expression
+#List the top 10 genes with the highest mean expression
 ```{r,}
 top_genes <- gene_data[order(-gene_data$Mean_Expression), ]
 top10_genes <- head(top_genes, 10)
 top10_genes
 ```
 
-
-
-Step 4: number of genes with a mean <10
+# Step 4: number of genes with a mean <10
 ```{r}
 meanless10<- subset(gene_data,`Mean_Expression` < 10)
 nrow(meanless10)
 ```
 
-step 5:histogram plot of the mean values
-# Create a histogram of the mean expression values
+# step 5:histogram plot of the mean values
+#Create a histogram of the mean expression values
+
 ```{r}
 hist(top10_genes$Mean_Expression,xlab="Top 10 genes",main =" Top gene 10 mean expression")
 ```
 
-Step 6: Import and Analyze Growth Data
-# Download and read in the growth_data.csv file
+# Step 6: Import and Analyze Growth Data
+#Download and read in the growth_data.csv file
+```{r}
 download.file("https://github.com/ghazkha/Assessment4/raw/main/growth_data.csv", destfile = "growth_data.csv")
 growth_data <- read.csv("growth_data.csv")
+```
 
-# Show the column names
+#Show the column names
+```{r}
 colnames(growth_data)
+```
 
-Step 6: Reshape and Analyze Growth Data
-# Reshape the data from wide to long format
-long_growth_data <- growth_data %>%
-  pivot_longer(cols = starts_with("Circumf_"), names_to = "Year", names_prefix = "Circumf_", values_to = "Circumference")
-long_growth_data$Year <- as.numeric(long_growth_data$Year)
+# Step 7: subset southwest site
+#Reshape the data from wide to long format
+```{r}
+southwest <- subset(growth_data,Site == "southwest", c("Circumf_2005_cm", "Circumf_2020_cm"))
+head(southwest)
+```
 
-Step 7: Box Plot of Growth Data
-# Create a boxplot of tree circumference by year
-ggplot(long_growth_data, aes(x = as.factor(Year), y = Circumference, fill = Site)) +
-  geom_boxplot() +
-  theme_minimal() +
-  labs(title = "Boxplot of Tree Circumference",
-       x = "Year",
-       y = "Circumference (cm)")
+# step 8:southwest mean over the years
+```{r}
+colMeans(southwest)
+```
 
----
+# step 9 : circumferenc standard deviation each year
+```{r}
+sd(southwest[,1])
+```
+```{r}
+sd(southwest[,2])
+```
+
+```{r}
+
+```
+
+
+
+
+
 title: "Part 2- Gene and Protein Comparison of E-coli and Campylobacter coli "
 output: html_document
 date: "2024-10-08"
