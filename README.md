@@ -99,12 +99,24 @@ sd(northeast[,2])
 ```
 
 # Step 13 Box Plot of Growth Data
-# Create a boxplot of tree circumference by year
+#Create a boxplot of tree circumference by year
 ```{r}
 boxplot(northeast [,1],northeast [,2],southwest[,1],southwest[,2],xlab="number of cylinders",ylab = "circumfrence",main="Tree circumference",names = c("northeast 2005","northeast 2020","southwest 2005","southwest 2020"))
 ```
-
-
+# step 14 - subset data 2020 and 2010 to take means value of diffrences over the 10 year
+#find the mean values of the different of the growth between two years
+#for northeast
+```{r}
+northeast_grwdif<- subset(growth_data,Site == "northeast", c("Circumf_2010_cm","Circumf_2020_cm"))
+northeast_grwdif$growth_diffe <-northeast_grwdif$Circumf_2020_cm -northeast_grwdif$Circumf_2010_cm
+colMeans(northeast_grwdif)
+```
+#for soutwest
+```{r}
+southwest_grwdif <- subset(growth_data,Site == "southwest", c("Circumf_2010_cm","Circumf_2020_cm"))
+southwest_grwdif$growth_diffe <-southwest_grwdif$Circumf_2020_cm -southwest_grwdif$Circumf_2010_cm
+colMeans(southwest_grwdif)
+```
 
 
 
