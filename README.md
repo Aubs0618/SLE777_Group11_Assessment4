@@ -442,4 +442,6 @@ campylofreq <- count(prots_campylo,wordsize=1,alphabet=aa,freq=TRUE)
 barplot(campylofreq ,xlab="Proteins sequence",ylab="Frequency", main="Campylobacter  protein composition")
 
 ```
-
+# session information
+```{r}sessionInfo()
+```
