@@ -1,11 +1,6 @@
 # SLE777_Group11_Assessment4
 ## Part 1: Gene Expression and Growth Data Analysis
 
-# Load necessary libraries
-library(ggplot2)  # For plotting
-library(dplyr)    # For data manipulation
-library(tidyr)    # For reshaping the data
-
 # Step 1: Download and read in the gene_expression.tsv file
 download.file("https://github.com/ghazkha/Assessment4/raw/main/gene_expression.tsv", destfile = "gene_expression.tsv")
 gene_data <- read.table("gene_expression.tsv", header = TRUE, sep = "\t", row.names = 1)
