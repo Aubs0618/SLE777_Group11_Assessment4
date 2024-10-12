@@ -2,24 +2,36 @@
 ## Part 1: Gene Expression and Growth Data Analysis
 
 # Step 1: Download and read in the gene_expression.tsv file
+
+```{r,}
 download.file("https://github.com/ghazkha/Assessment4/raw/main/gene_expression.tsv", destfile = "gene_expression.tsv")
 gene_data <- read.table("gene_expression.tsv", header = TRUE, sep = "\t", row.names = 1)
+```
 
 # Show the first six genes
+```{r,top 6}
 head(gene_data, 6)
+```
 
 # Step 2: Add a new column for the mean expression of each gene
+```{r,mean}
 gene_data$Mean_Expression <- rowMeans(gene_data)
+```
 
 # Show the first six genes with the mean expression
+```{r,}
 head(gene_data, 6)
+```
 
 Step 3: Top 10 Genes with Highest Mean Expression
 
 # List the top 10 genes with the highest mean expression
+```{r,}
 top_genes <- gene_data[order(-gene_data$Mean_Expression), ]
 top10_genes <- head(top_genes, 10)
 top10_genes
+```
+
 
 
 Step 4: Histogram of Mean Expression Values
@@ -59,6 +71,8 @@ title: "Part 2- Gene and Protein Comparison of E-coli and Campylobacter coli "
 output: html_document
 date: "2024-10-08"
 ---
+
+
 
 # Qestion 01 - 
 
